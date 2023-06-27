@@ -17,10 +17,7 @@
 		"markdown",
 		"parser",
 		"markdown-parser",
-		"markdown-js",
-		"markdown-ts",
-		"markdown-js-parser",
-		"markdown-ts-parser"
+		"markdown-html"
 	],
 	"author": "nitono <pyto015@ya.ru>",
 	"license": "ISC",
