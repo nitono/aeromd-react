@@ -1,0 +1,40 @@
+{
+	"name": "@nitonodev/aeromd-html",
+	"description": "The @nitonodev/aeromd plugin for generate html pages",
+	"version": "1.0.0",
+	"main": "lib/index.js",
+	"module": "lib/index.js",
+	"scripts": {
+		"format": "prettier --write .",
+		"start": "npm run format && nodemon src/index.ts",
+		"build": "npm run format && tsc --build"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/nitono/aeromd-html.git"
+	},
+	"keywords": [
+		"markdown",
+		"parser",
+		"markdown-parser",
+		"markdown-js",
+		"markdown-ts",
+		"markdown-js-parser",
+		"markdown-ts-parser"
+	],
+	"author": "nitono <pyto015@ya.ru>",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/nitono/aeromd-html/issues"
+	},
+	"homepage": "https://github.com/nitono/aeromd-html#readme",
+	"devDependencies": {
+		"nodemon": "^2.0.22",
+		"prettier": "^2.8.8",
+		"typescript": "^5.1.3"
+	},
+	"dependencies": {
+		"@nitonodev/aeromd": "^0.0.0-release-public",
+		"fs": "^0.0.1-security"
+	}
+}
