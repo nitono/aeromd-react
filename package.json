@@ -1,7 +1,7 @@
 {
 	"name": "@nitonodev/aeromd-html",
 	"description": "The @nitonodev/aeromd plugin for generate html pages",
-	"version": "1.0.0",
+	"version": "1.0.0-edited",
 	"main": "lib/index.js",
 	"module": "lib/index.js",
 	"scripts": {
