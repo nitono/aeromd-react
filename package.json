@@ -1,37 +1,35 @@
 {
-	"name": "@nitonodev/aeromd-html",
-	"description": "The @nitonodev/aeromd plugin for generate html pages",
-	"version": "1.0.0-edited",
+	"name": "@nitonodev/aeromd-react",
+	"description": "The @nitonodev/aeromd plugin for parse markdown to react",
+	"version": "1.0.0",
 	"main": "lib/index.js",
 	"module": "lib/index.js",
 	"scripts": {
 		"format": "prettier --write .",
 		"start": "npm run format && nodemon src/index.ts",
-		"build": "npm run format && tsc --build"
+		"build": "npm run format && tsc --build && @powershell copy -r ./src/styles/ ./lib/"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/nitono/aeromd-html.git"
+		"url": "git+https://github.com/nitono/aeromd-react.git"
 	},
 	"keywords": [
 		"markdown",
 		"parser",
 		"markdown-parser",
-		"markdown-html"
+		"markdown-react",
+		"react",
+		"markdown-react-parser"
 	],
 	"author": "nitono <pyto015@ya.ru>",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/nitono/aeromd-html/issues"
+		"url": "https://github.com/nitono/aeromd-react/issues"
 	},
-	"homepage": "https://github.com/nitono/aeromd-html#readme",
+	"homepage": "https://github.com/nitono/aeromd-react#readme",
 	"devDependencies": {
 		"nodemon": "^2.0.22",
 		"prettier": "^2.8.8",
 		"typescript": "^5.1.3"
-	},
-	"dependencies": {
-		"@nitonodev/aeromd": "^0.0.0-release-public",
-		"fs": "^0.0.1-security"
 	}
 }

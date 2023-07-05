@@ -1,24 +1,59 @@
-import { writeFileSync } from 'fs';
-import { cwd } from 'process';
-import { CSSTemplate } from './templates/css.template';
-import { HTMLPageTemplate } from './templates/html_page.template';
-import { MarkdownParser } from '@nitonodev/aeromd';
-export class GenerateHTMLPage {
+import { rules } from './rules/rules';
+export class ReactMarkdownParser {
 	constructor(public markdown: string) {}
-	generateStyles = () => {
-		writeFileSync(cwd() + '\\md-theme.css', CSSTemplate);
-		return CSSTemplate;
-	};
-
-	generateHTMLPage = () => {
-		const parsedMarkdown = new MarkdownParser(this.markdown).parse();
-		this.generateStyles();
-		const HTMLPage = HTMLPageTemplate({
-			parsedMarkdown: parsedMarkdown
+	parse(m: string = this.markdown): string {
+		m = m.replace(/(\>+)\s*([^\n]+)/gim, (_match, arrows, content) => {
+			console.log(content, arrows.length);
+			const margin =
+				arrows.length !== 1 ? arrows.length * 10 + 'px' : 0 + 'px';
+			return `<blockquote style={{marginLeft:"${margin} !important"}}>${content}</blockquote>`;
 		});
-		writeFileSync(cwd() + '\\md.html', HTMLPage);
-		return HTMLPage;
-	};
-}
 
-console.log(new GenerateHTMLPage('# Hello world').generateHTMLPage());
+		m = m.replace(/\|.*\|.*\|\n((\|.*\|.*\|\n)*)/gm, table => {
+			return `<table>\n<thead>\n<tr>\n${
+				'<th>' +
+				table
+					.trim()
+					.split('\n')[0]
+					.replace(/\s*\|\s*/g, '</th><th>') +
+				'</th>'
+			}\n</tr>\n</thead>\n<tbody>\n<tr>\n${
+				'<td>' +
+				table
+					.trim()
+					.split('\n')
+					.slice(2)
+					.map(row => row.replace(/\s*\|\s*/g, '</td><td>') + '</td>')
+					.join('<tr></tr>')
+			}\n</tr>\n</tbody>\n</table>`;
+		});
+
+		rules.forEach(([regexp, replaced]) => {
+			m = m.replace(regexp, replaced);
+		});
+
+		m = m.replace(
+			/(^\d+).\s*([^\n]+)+\n+/gm,
+			(matches, number, content) => {
+				return `<div><span>${number}</span>. ${content}</div>`;
+			}
+		);
+		m = m.replace(/(\n\s+)+\-+\s+([^\n]+)/gim, (matches, tabs, content) => {
+			return `<ul><li style={{marginLeft:"${
+				tabs.length * 5
+			}px"}}>${content}</li></ul>`;
+		});
+		m = m.replace(/(\n\s+)+\++\s+([^\n]+)/gim, (matches, tabs, content) => {
+			return `<ul><li style={{marginLeft:"${
+				tabs.length * 5
+			}px"}}>${content}</li></ul>`;
+		});
+		m = m.replace(/(\n\s+)+\*+\s+([^\n]+)/gim, (matches, tabs, content) => {
+			return `<ul><li style={{marginLeft:"${
+				tabs.length * 5
+			}px"}}>${content}</li></ul>`;
+		});
+
+		return m;
+	}
+}
