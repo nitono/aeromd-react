@@ -74,10 +74,10 @@ rmp.parse('## Hello, World !'); // => <h2>Hello, World !</h2>
 <h3 id="react-component">Create React component</h3>
 This helps you to create react component with parsed markdown
 
-Install [`highlight.js`](https://www.npmjs.com/package/highlight.js) to highlight code blocks
+Install [`highlight.js`](https://www.npmjs.com/package/highlight.js) to highlight code blocks and @nitonodev/aeromd with styles for markdown
 
 ```bash
-npm i highlight.js
+npm i highlight.js @nitonodev/aeromd
 ```
 
 Add this lines to you code in react
@@ -85,7 +85,7 @@ Add this lines to you code in react
 ```diff
 + import React, {useEffect} from 'react'
 + import { ReactMarkdownParser } from '@nitonodev/aeromd-react'
-+ import '@nitonodev/aeromd-react/lib/styles/md-theme.css'
++ import '@nitonodev/aeromd/lib/styles/md-theme.css'
 + import 'highlight.js/styles/base16/solarized-dark.css'
 + import hljs from 'highlight.js'
 
@@ -105,7 +105,9 @@ function App() {
 
     return (
         ... // Your code
-+       <MarkdownComponent/>
++       <div id="html">
++          <MarkdownComponent/>
++        </div>
     )
 }
 
