@@ -63,10 +63,10 @@ Example:
 ```ts
 const rmp = new ReactMarkdownParser('# Hello');
 // if you want to use default value from class definition
-rmp.parse(); // => <h1>Hello</h1>
+rmp.parse(); // => <div id='html'><div id="body"><h1>Hello</h1></div></div>
 
 // if you want to use custom parsing value
-rmp.parse('## Hello, World !'); // => <h2>Hello, World !</h2>
+rmp.parse('## Hello, World !'); // => <div id='html'><div id="body"><h2>Hello, World !</h2></div></div>
 ```
 
 ---
@@ -99,15 +99,13 @@ function App() {
 
 +    const MarkdownComponenet = () =>
 +    React.createElement("div", {
-+      dangerouslySetInnerHTML: { __html: data },
-+      id: "body",
++      dangerouslySetInnerHTML: { __html: data }
 +    });
 
     return (
         ... // Your code
-+       <div id="html">
 +          <MarkdownComponent/>
-+        </div>
++
     )
 }
 

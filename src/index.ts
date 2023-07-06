@@ -54,6 +54,6 @@ export class ReactMarkdownParser {
 			}px"}}>${content}</li></ul>`;
 		});
 
-		return m;
+		return `<div id="html"><div id="body">${m}</div></div>`;
 	}
 }
