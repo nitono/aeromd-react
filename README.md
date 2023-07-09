@@ -95,7 +95,7 @@ Add this lines to you code in react
 function App() {
 +   useEffect(() => hljs.highlightAll())
 
-+    const data = new ReactMarkdownParser("# Hello")
++    const data = new ReactMarkdownParser("# Hello").parse()
 
 +    const MarkdownComponenet = () =>
 +    React.createElement("div", {
